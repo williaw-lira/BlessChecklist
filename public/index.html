@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>CADASTRO BLESS</title>
+    <link rel="icon" type="image/png" href="png/LOGO-BLESS-PNG.png" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="main-content">
+        <div class="wrap">
+            <div class="card">
+                <header>
+                    <div class="logo-bless">
+                        <img src="png/LOGO-BLESS-PNG.png" />
+                    </div>
+                    <div>
+                        <h1>CHECKLIST BLESS INTERNET — PRÉ-CADASTRO RÁPIDO</h1>
+                        <div class="small">Responda uma pergunta por vez. Pressione <strong>Enter</strong> para confirmar e avançar.</div>
+                    </div>
+                </header>
+                <div id="progressWrap" style="margin-top:12px">
+                    <div class="progress" id="progressBar" style="width:100%"></div>
+                </div>
+                <div style="margin-top:12px">
+                    <div class="question" id="questionLabel">Carregando...</div>
+                    <div id="inputWrap"></div>
+                    <div class="controls">
+                        <button id="prevBtn" class="btn ghost">Voltar</button>
+                        <button id="skipBtn" class="btn ghost">Pular</button>
+                        <button id="confirmBtn" class="btn">OK (Enter)</button>
+                    </div>
+                    <div class="steps" id="answeredChips"></div>
+                    <div class="preview" id="previewArea">AQUI FICARÁ O TEXTO DO CADASTRO</div>
+                    <div style="display:flex;gap:8px;margin-top:10px">
+                        <button id="copyBtn" class="btn">Copiar para WhatsApp</button>
+                        <button id="waBtn" class="btn">Abrir WhatsApp Web</button>
+                        <button id="genPdfBtn" class="btn">Gerar Orçamento</button>
+                        <button id="finalizeBtn" class="btn ghost">Finalizar (Limpar)</button>
+                    </div>
+                    <footer>
+                        Dica: utilize <strong>Tab</strong> para focar o campo e <strong>Enter</strong> para confirmar. Se quiser editar um campo já respondido clique na etiqueta (chip) correspondente.
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <div class="side">
+            <div class="card">
+                <h1 style="font-size:16px;margin:0 0 8px 0;color:var(--secondary)">Checklist rápido</h1>
+                <div><label><input type="checkbox" id="chk2via" /> CONFERIU 2ª VIA DO CLIENTE</label></div>
+                <div><label><input type="checkbox" id="chkEndereco" /> CONFERIU ENDEREÇO</label></div>
+                <div><label><input type="checkbox" id="chkDocFoto" /> DOCUMENTO (FOTO)</label></div>
+                <div><label><input type="checkbox" id="chkTitular" /> TITULAR CONFERE</label></div>
+                <div style="margin-top:12px">
+                    <button id="includeChecklist" class="btn ghost">Incluir checklist no texto</button>
+                </div>
+                <div style="margin-top:12px" class="small">Status: <span id="status">PRONTO</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

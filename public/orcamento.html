@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Orçamento — BLESS</title>
+    <link rel="icon" type="image/png" href="png/LOGO-BLESS-PNG.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css\orcamento.css"/>
+</head>
+<body>
+    <div class="sheet" id="pdfContent">
+        <header>
+            <div class="logo">
+                <img src="png/LOGO-BLESS-PNG.png" />
+                <div>
+                    <h1>ORÇAMENTO — BLESS INTERNET</h1>
+                    <div class="meta" id="metaDate">Data: </div>
+                </div>
+            </div>
+            <div class="small-note">FIDELIDADE DE 12 MESES - INSTALAÇÃO GRATUITA</div>
+        </header>
+
+        <div class="cliente" id="clienteInfo">
+            <div>
+                <strong>Cliente</strong>
+                <div id="c_nome" contenteditable="true" class="editable">-</div>
+            </div>
+            <div>
+                <strong>CNPJ / CPF</strong>
+                <div id="c_doc" contenteditable="true" class="editable">-</div>
+            </div>
+            <div>
+                <strong>Endereço</strong>
+                <div id="c_end" contenteditable="true" class="editable">-</div>
+            </div>
+            <div>
+                <strong>Cidade - UF</strong>
+                <div id="c_cid" contenteditable="true" class="editable">-</div>
+            </div>
+            <div>
+                <strong>Telefone</strong>
+                <div id="c_tel" contenteditable="true" class="editable">-</div>
+            </div>
+            <div>
+                <strong>Email</strong>
+                <div id="c_email" contenteditable="true" class="editable">-</div>
+            </div>
+        </div>
+
+        <div class="controls-top">
+            <div class="left">
+                <button id="addRow" class="btn">Adicionar item</button>
+                <button id="toggleEdit" class="btn ghost">Ativar Edição</button>
+                <button id="clearSelected" class="btn ghost">Apagar selecionados</button>
+                <button id="toggleTotal" class="btn ghost">Esconder Total</button>
+            </div>
+            <div>
+                <span style="color:var(--muted)">Selecione linhas com checkbox para apagar.</span>
+            </div>
+        </div>
+
+        <table aria-label="Tabela de planos" id="plansTable">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll" title="Selecionar todos"></th>
+                    <th>DESCRIÇÃO</th>
+                    <th>QUANTIDADE</th>
+                    <th>VALOR (R$)</th>
+                    <th>AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody id="plansBody"></tbody>
+            <tfoot id="totalRow">
+                <tr class="total-row">
+                    <td colspan="3" style="text-align:right">TOTAL (R$)</td>
+                    <td id="totalValue" class="right">0,00</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <div class="foot">
+            <div style="margin-top:12px"><strong>Observações:</strong></div>
+            <div id="obsText" class="small-note editable" contenteditable="true">---</div>
+
+            <div style="margin-top:18px">
+                <div><strong>Contato Comercial:</strong></div>
+                <div style="margin-top:6px">Douglas Oliveira - Coordenador Comercial</div>
+                <div>(44) 99914-2862 | douglas.oliveira@blessinternet.com.br</div>
+                <div>www.blessinternet.com</div>
+                <div style="margin-top:8px">Av. Dr. Alexandre Rasgulaeff, 4061 - Parque Res. Cidade Nova, Maringá - PR, 87023-060</div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="downloadPdf" class="btn">Baixar PDF</button>
+            <button id="saveBtn" class="btn ghost">Salvar Orçamento</button>
+            <button id="backBtn" class="btn ghost">Voltar (abrir cadastro)</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="js/orcamento.js"></script>
+</body>
+</html>

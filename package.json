@@ -1,0 +1,26 @@
+{
+  "name": "projetobless",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "pdf-poppler": "^0.2.3",
+    "sharp": "^0.34.4",
+    "tesseract.js": "^6.0.1",
+    "dotenv": "^16.3.1",
+    "helmet": "^6.0.1",
+    "express-rate-limit": "^7.0.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
+
