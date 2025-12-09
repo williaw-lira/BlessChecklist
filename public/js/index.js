@@ -14,8 +14,7 @@ const planoOptions = [
     'BLESS 800MB 109,90 COM FIXO 49,90',
     'BLESS 800MB 109,90 COM FIXO 29,90',
     'BLESS 950MB PREDIAL 99,90 COM FIXO 49,90',
-    'BLESS 950MB PREDIAL 99,90 COM FIXO 29,90',
-
+    'BLESS 950MB PREDIAL 99,90 COM FIXO 29,90'
 ];
 const steps = [
     {key:'vendedor', label:'Informe o nome do VENDEDOR', placeholder:'Ex: VENDEDOR BLESS', type:'text',},
