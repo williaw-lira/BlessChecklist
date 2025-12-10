@@ -16,13 +16,14 @@ const planoOptions = [
     'BLESS 950MB PREDIAL 99,90 COM FIXO 49,90',
     'BLESS 950MB PREDIAL 99,90 COM FIXO 29,90'
 ];
+
 const steps = [
     {key:'vendedor', label:'Informe o nome do VENDEDOR', placeholder:'Ex: VENDEDOR BLESS', type:'text',},
-    {key:'tipo', label:'Tipo de cliente', type:'select', options:[{v:'PF',t:'PESSOA FÍSICA'},{v:'PJ',t:'PESSOA JURÍDICA'}]},
-    {key:'cliente', label:'Nome do CLIENTE (PF: nome completo | PJ: nome da empresa)', placeholder:'Ex: CLIENTE LTDA', type:'text'},
-    {key:'responsavel', label:'Nome do RESPONSÁVEL (apenas PJ)', placeholder:'Ex: NOME DO RESPONSÁVEL', type:'text', onlyPJ:true},
-    {key:'documento', label:'CNPJ (apenas PJ)', placeholder:'Ex: 12345678000199', type:'text', mask:'cpf_cnpj', onlyPJ:true},
+    {key:'documento', label:'CNPJ (apenas PJ)', placeholder:'Ex: 12345678000199', type:'text', mask:'cpf_cnpj'},
     {key:'cpf', label:'CPF (PF ou responsável PJ)', placeholder:'Ex: 12345678900', type:'text', mask:'cpf_cnpj'},
+    {key:'cliente', label:'Nome do CLIENTE (PF: nome completo | PJ: nome da empresa)', placeholder:'Ex: CLIENTE LTDA', type:'text'},
+    {key:'tipo', label:'Tipo de cliente', type:'select', options:[{v:'PF',t:'PESSOA FÍSICA'},{v:'PJ',t:'PESSOA JURÍDICA'}]},
+    {key:'responsavel', label:'Nome do RESPONSÁVEL (apenas PJ)', placeholder:'Ex: NOME DO RESPONSÁVEL', type:'text', onlyPJ:true},
     {key:'rg', label:'RG', placeholder:'Ex: 398190239', type:'text'},
     {key:'caracteristicas', label:'Possui internet? (se sim qual?)', placeholder:'Ex: SEM INTERNET', type:'textarea'},
     {key:'profissao', label:'Profissão', placeholder:'Ex: MECANICO', type:'text'},
@@ -69,10 +70,8 @@ function maskCEP(v){
 }
 
 function setQuestion(i){
-    if(steps[i].key === 'responsavel' && answers['tipo'] !== 'PJ') {
-        setQuestion(i+1); return;
-    }
-    if(steps[i].key === 'documento' && answers['tipo'] !== 'PJ') {
+    // Pula perguntas condicionais baseado no tipo de cliente
+    if(steps[i] && steps[i].onlyPJ && answers['tipo'] !== 'PJ') {
         setQuestion(i+1); return;
     }
     index = Math.max(0, Math.min(i, steps.length-1));
@@ -322,11 +321,19 @@ try{
 }
 
 document.getElementById('genPdfBtn').addEventListener('click', ()=>{
+    // Validar se há dados mínimos antes de gerar orçamento
+    if(!answers['cliente'] || !answers['plano']) {
+        alert('Por favor, preencha no mínimo: Cliente e Plano');
+        return;
+    }
     if(!salvarParaOrcamento()){
         alert('Não foi possível salvar os dados localmente.');
         return;
     }
-    window.open('orcamento.html', '_blank');
+    // Pequeno delay para garantir que localStorage foi escrito
+    setTimeout(() => {
+        window.open('orcamento.html', '_blank');
+    }, 100);
 });
 
 function init(){ setQuestion(0); renderChips(); buildPreview(); }

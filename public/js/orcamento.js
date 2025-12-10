@@ -209,5 +209,11 @@ const defaultPlans = [
 
  
     const data = carregarDados();
-    preencherTela(data);
+    if(data) {
+        console.log('Dados carregados do localStorage:', data);
+        preencherTela(data);
+    } else {
+        console.log('Nenhum dado encontrado no localStorage');
+        preencherTela(null);
+    }
     setInterval(updateTotal, 1000);
