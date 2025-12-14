@@ -1,10 +1,12 @@
 const planoOptions = [
-    'BLESS 900MB COM PORTABILIDADE 99,90',
-    'BLESS 950MB PREDIAL 99,90',
+    'ESCOLHA O PLANO',
     'BLESS 600MB 99,90',
     'BLESS 800MB 109,90/MÊS',
+    'BLESS 900MB COM PORTABILIDADE 99,90',
+    'BLESS 950MB PREDIAL 99,90',
     'BLESS 1GB 149,90/MÊS',
-    'BLESS 1,5GB 199,90/MÊS'
+    'BLESS 1,5GB 199,90/MÊS',
+    'BLESS TELEFONE FIXO 49,90'
 ];
 const steps = [
     {key:'vendedor', label:'Informe o nome do VENDEDOR', placeholder:'Ex: VENDEDOR BLESS', type:'text',},
