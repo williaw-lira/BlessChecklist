@@ -19,6 +19,8 @@ const steps = [
     {key:'caracteristicas', label:'Possui internet? (se sim qual?)', placeholder:'Ex: SEM INTERNET', type:'textarea'},
     {key:'profissao', label:'Profissão', placeholder:'Ex: MECANICO', type:'text'},
     {key:'plano', label:'Plano', type:'select-editable', options:planoOptions},
+    {key:'tipo_venda', label:'Tipo de venda', type:'select', options:[{v:'NORMAL',t:'NORMAL'},{v:'PREDIAL',t:'PREDIAL'},{v:'OAB',t:'OAB'}]},
+    {key:'nome_residencial', label:'Nome do residencial', placeholder:'Ex: CONDOMINIO FLORES', type:'text', onlyPredial:true},
     {key:'sexo', label:'Estado civil', type:'select', options:[{v:'CASADO',t:'CASADO'},{v:'CASADA',t:'CASADA'}]},
     {key:'endereco_log', label:'Endereço - rua e número', placeholder:'AV BRASIL - 00', type:'text'},
     {key:'endereco_bairro', label:'Bairro', placeholder:'ZONA 07', type:'text'},
@@ -65,6 +67,9 @@ function setQuestion(i){
         setQuestion(i+1); return;
     }
     if(steps[i].key === 'documento' && answers['tipo'] !== 'PJ') {
+        setQuestion(i+1); return;
+    }
+    if(steps[i].key === 'nome_residencial' && answers['tipo_venda'] !== 'PREDIAL') {
         setQuestion(i+1); return;
     }
     index = Math.max(0, Math.min(i, steps.length-1));
@@ -190,7 +195,14 @@ function renderChips(){
 function buildPreview(){
     const L = v=>toUpper(v||'');
     const lines = [];
-    lines.push('*NOVA VENDA - BLESS INTERNET*');
+    
+    // Determina o tipo de venda para o título
+    let tipoVenda = answers['tipo_venda'] || 'INTERNET';
+    let tituloVenda = 'BLESS INTERNET';
+    if(tipoVenda === 'PREDIAL') tituloVenda = 'BLESS PREDIAL';
+    else if(tipoVenda === 'OAB') tituloVenda = 'BLESS OAB';
+    
+    lines.push('*NOVA VENDA - ' + tituloVenda + '*');
     if(answers['vendedor']) lines.push('VENDEDOR: ' + L(answers['vendedor']));
         lines.push('');
     if(answers['cliente']) lines.push('*' + L(answers['cliente']) + '*');
@@ -217,6 +229,8 @@ function buildPreview(){
     if(answers['tel_recado']) lines.push(L(answers['tel_recado']) + ' - RECADO');
         lines.push('');
     if(answers['plano']) lines.push('*' + L(answers['plano']) + '*');
+    if(answers['tipo_venda'] === 'OAB') lines.push('S/ FIDELIDADE');
+    if(answers['nome_residencial'] && answers['tipo_venda'] === 'PREDIAL') lines.push('RESIDENCIAL: ' + L(answers['nome_residencial']));
     if(answers['venc']) lines.push('VENC: ' + L(answers['venc']));
     if(includeChecklist){
         lines.push('');
