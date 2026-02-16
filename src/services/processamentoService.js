@@ -1,6 +1,4 @@
 
-const sharp = require('sharp');
-const pdf = require('pdf-poppler');
 const fs = require('fs');
 const path = require('path');
 
