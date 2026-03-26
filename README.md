@@ -5,7 +5,7 @@
 > **Curso:** Engenharia de Software
 > **Período:** 11/08/2025 a 05/12/2025 – Carga horária: 40h
 > **Local:** Av.Dr.Alexandre Rasgulaeff, 4061, Maringá- PR
-> **Link do site:** [blesscheck.vercel.app](https://blesscheck.vercel.app/)
+> **Link do site:** [blesscheck.vercel.app](https://prime-checklist.vercel.app/)
 > **Repositório GitHub:** [github.com/williaw-lira/BlessChecklist](https://github.com/williaw-lira/BlessChecklist)
 
 ---
